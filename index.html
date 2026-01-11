@@ -3,71 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PRITMA - Clinical-grade intelligence platform combating health misinformation in Nigeria. Join the waitlist for early access.">
-    <title>PRITMA Health - Closing the Gap Between Rumor and Clinical Truth</title>
     
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="PRITMA - Nigeria's first clinical-grade intelligence platform combating life-threatening health misinformation. Join the waitlist for priority access in Lagos & Kano 2026.">
+    <meta name="keywords" content="health misinformation, Nigeria healthcare, clinical intelligence, PRITMA, medical fact-checking">
+    <meta name="author" content="PRITMA Health">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="PRITMA Health - Closing the Gap Between Rumor and Clinical Truth">
+    <meta property="og:description" content="In 2026, a WhatsApp voice note can undo a year of clinical care. PRITMA detects and neutralizes life-threatening misinformation before it reaches your patients.">
+    <meta property="og:image" content="https://pritma.health/og-image.jpg">
+    <meta property="og:url" content="https://pritma.health">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PRITMA Health">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PRITMA Health - Combat Health Misinformation">
+    <meta name="twitter:description" content="Nigeria's first clinical-grade platform to detect dangerous health rumors. Join the waitlist for early access.">
+    <meta name="twitter:image" content="https://pritma.health/twitter-card.jpg">
+    
+    <!-- WhatsApp Specific Meta Tags -->
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <!-- Preconnect for Performance (if external fonts needed) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <!-- DNS Prefetch for API calls -->
+    <link rel="dns-prefetch" href="https://api.pritma.health">
+    
+    <title>PRITMA Health - Combat Health Misinformation in Nigeria | Join Waitlist</title>
+    
+    <!-- Critical CSS Inline (for above-the-fold content) -->
     <style>
-        /* ==================== CSS RESET & BASE ==================== */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-dark: #0a1628;
-            --bg-darker: #050d1a;
-            --text-primary: #ffffff;
-            --text-secondary: #b8c5d6;
-            --accent-green: #00FF41;
-            --accent-blue: #4a90e2;
-            --critical-red: #ff4444;
-            --border-color: #1a2942;
-            --card-bg: #0f1d33;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
+        /* Critical CSS for fast initial render */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #0a1628;
+            color: #ffffff;
             line-height: 1.6;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
         }
-
-        /* ==================== SCANNING OVERLAY ANIMATION ==================== */
-        .scan-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .scan-overlay.active {
-            opacity: 1;
-        }
-
-        .scan-line {
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-green), transparent);
-            box-shadow: 0 0 20px var(--accent-green);
-            animation: scanMove 2s ease-in-out;
-        }
-
-        @keyframes scanMove {
-            0% { top: 0; }
-            100% { top: 100%; }
-        }
-
-        /* ==================== HEADER ==================== */
         header {
             position: fixed;
             top: 0;
@@ -75,22 +58,9 @@
             padding: 1rem 2rem;
             background: rgba(10, 22, 40, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid #1a2942;
             z-index: 1000;
         }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo {
-            height: 40px;
-            width: auto;
-        }
-
-        /* ==================== HERO SECTION ==================== */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -98,565 +68,56 @@
             justify-content: center;
             align-items: center;
             padding: 8rem 2rem 4rem;
-            position: relative;
-            background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
-        }
-
-        .status-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 68, 68, 0.1);
-            border: 1px solid var(--critical-red);
-            border-radius: 20px;
-            margin-bottom: 2rem;
-            animation: flicker 2s infinite;
-        }
-
-        @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--critical-red);
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.3); opacity: 0.7; }
-        }
-
-        .hero h1 {
-            font-size: clamp(2rem, 6vw, 4.5rem);
-            font-weight: 700;
-            text-align: center;
-            max-width: 1100px;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            background: linear-gradient(135deg, var(--text-primary), var(--accent-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: var(--text-secondary);
-            text-align: center;
-            max-width: 900px;
-            margin-bottom: 3rem;
-            line-height: 1.8;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--accent-green);
-            color: var(--bg-dark);
-            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 50px rgba(0, 255, 65, 0.5);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--accent-green);
-            border: 2px solid var(--accent-green);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(0, 255, 65, 0.1);
-            transform: translateY(-2px);
-        }
-
-        /* ==================== COUNTDOWN ==================== */
-        .countdown-section {
-            padding: 3rem 2rem;
-            text-align: center;
-            background: var(--card-bg);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .countdown-title {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-green);
-        }
-
-        .countdown {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .countdown-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .countdown-value {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent-green);
-            font-variant-numeric: tabular-nums;
-        }
-
-        .countdown-label {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* ==================== HALLUCINATION OBSERVATORY ==================== */
-        .observatory {
-            padding: 6rem 2rem;
-            background: var(--bg-dark);
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 4rem;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .section-subtitle {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-        }
-
-        .ticker-container {
-            position: relative;
-            overflow: hidden;
-            padding: 2rem 0;
-        }
-
-        .ticker-wrapper {
-            display: flex;
-            gap: 2rem;
-            animation: scroll 30s linear infinite;
-        }
-
-        .ticker-wrapper:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .myth-card {
-            min-width: 400px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .myth-card:hover {
-            border-color: var(--accent-green);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 255, 65, 0.2);
-        }
-
-        .myth-tag {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            background: rgba(255, 68, 68, 0.2);
-            color: var(--critical-red);
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
-
-        .myth-content {
-            font-size: 1.125rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .myth-comparison {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .comparison-item {
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 0.875rem;
-        }
-
-        .ai-score {
-            background: rgba(74, 144, 226, 0.1);
-            border-left: 3px solid var(--accent-blue);
-        }
-
-        .clinical-flag {
-            background: rgba(255, 68, 68, 0.1);
-            border-left: 3px solid var(--critical-red);
-        }
-
-        .myth-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            margin-top: 1rem;
-        }
-
-        .myth-card.expanded .myth-details {
-            max-height: 500px;
-        }
-
-        /* ==================== WAITLIST FORM ==================== */
-        .waitlist-section {
-            padding: 6rem 2rem;
-            background: var(--bg-darker);
-        }
-
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            padding: 3rem;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 1rem;
-            background: var(--bg-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-size: 1rem;
-            transition: var(--transition);
-            font-family: inherit;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--accent-green);
-            box-shadow: 0 0 0 3px rgba(0, 255, 65, 0.1);
-        }
-
-        textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .error-message {
-            color: var(--critical-red);
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-            display: none;
-        }
-
-        .form-group.error .error-message {
-            display: block;
-        }
-
-        .form-group.error input,
-        .form-group.error select,
-        .form-group.error textarea {
-            border-color: var(--critical-red);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1.25rem;
-            background: var(--accent-green);
-            color: var(--bg-dark);
-            border: none;
-            border-radius: 8px;
-            font-size: 1.125rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .submit-btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(0, 255, 65, 0.4);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* ==================== SUCCESS MODAL ==================== */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: var(--card-bg);
-            padding: 3rem;
-            border-radius: 16px;
-            border: 1px solid var(--accent-green);
-            max-width: 500px;
-            text-align: center;
-            animation: modalSlideIn 0.3s ease;
-        }
-
-        @keyframes modalSlideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .modal-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 1.5rem;
-            border: 3px solid var(--accent-green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-        }
-
-        .modal h3 {
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-            color: var(--accent-green);
-        }
-
-        .referral-box {
-            background: var(--bg-dark);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-            border: 1px dashed var(--accent-green);
-        }
-
-        .referral-link {
-            display: block;
-            padding: 0.75rem;
-            background: var(--bg-darker);
-            border-radius: 4px;
-            color: var(--accent-green);
-            font-family: monospace;
-            font-size: 0.875rem;
-            word-break: break-all;
-            margin-bottom: 1rem;
-        }
-
-        .copy-btn {
-            padding: 0.75rem 1.5rem;
-            background: var(--accent-green);
-            color: var(--bg-dark);
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        /* ==================== INFRASTRUCTURE MOAT ==================== */
-        .infrastructure {
-            padding: 6rem 2rem;
-            background: var(--bg-dark);
-        }
-
-        .centaur-diagram {
-            max-width: 900px;
-            margin: 3rem auto;
-            padding: 3rem;
-            background: var(--card-bg);
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-        }
-
-        .diagram-flow {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .flow-node {
-            flex: 1;
-            min-width: 150px;
-            padding: 2rem 1.5rem;
-            background: var(--bg-dark);
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .flow-node:hover {
-            border-color: var(--accent-green);
-            transform: translateY(-5px);
-        }
-
-        .flow-arrow {
-            font-size: 2rem;
-            color: var(--accent-green);
-        }
-
-        .flow-node-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--accent-green);
-        }
-
-        .flow-node-desc {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-
-        /* ==================== RESPONSIVE ==================== */
-        @media (max-width: 768px) {
-            header {
-                padding: 1rem;
-            }
-
-            .logo {
-                height: 32px;
-            }
-
-            .hero {
-                padding: 6rem 1rem 3rem;
-            }
-
-            .cta-group {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            .countdown {
-                gap: 1rem;
-            }
-
-            .countdown-value {
-                font-size: 2rem;
-            }
-
-            .myth-card {
-                min-width: 300px;
-            }
-
-            .form-container {
-                padding: 2rem 1.5rem;
-            }
-
-            .diagram-flow {
-                flex-direction: column;
-            }
-
-            .flow-arrow {
-                transform: rotate(90deg);
-            }
-
-            .modal-content {
-                padding: 2rem 1.5rem;
-            }
-        }
-
-        /* ==================== ACCESSIBILITY ==================== */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        *:focus-visible {
-            outline: 2px solid var(--accent-green);
-            outline-offset: 2px;
         }
     </style>
+    
+    <!-- Main Stylesheet (deferred) -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Security Headers via Meta (backup for server headers) -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "PRITMA Health",
+        "description": "Clinical-grade intelligence platform combating health misinformation in Nigeria",
+        "url": "https://pritma.health",
+        "logo": "https://pritma.health/logo.png",
+        "foundingDate": "2025",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "NG",
+            "addressLocality": "Lagos"
+        }
+    }
+    </script>
 </head>
 <body>
-    <!-- Scanning Overlay -->
-    <div class="scan-overlay" id="scanOverlay">
+    <!-- Loading Indicator -->
+    <div id="pageLoader" class="page-loader" aria-live="polite" aria-busy="true">
+        <div class="loader-spinner"></div>
+        <span class="sr-only">Loading PRITMA Health platform...</span>
+    </div>
+
+    <!-- Skip to Main Content (Accessibility) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Scanning Overlay Animation -->
+    <div class="scan-overlay" id="scanOverlay" aria-hidden="true">
         <div class="scan-line"></div>
     </div>
 
     <!-- Header -->
     <header role="banner">
         <div class="logo-container">
-            <svg class="logo" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" aria-label="PRITMA Health Logo">
+            <!-- Using inline SVG for performance; replace with actual logo -->
+            <svg class="logo" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" aria-labelledby="logo-title" role="img">
+                <title id="logo-title">PRITMA Health Logo</title>
                 <rect width="200" height="80" fill="#0a1628"/>
                 <text x="100" y="45" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle">pritma</text>
                 <text x="100" y="65" font-family="Arial, sans-serif" font-size="12" fill="#b8c5d6" text-anchor="middle">health</text>
@@ -664,543 +125,293 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" role="main">
-        <div class="status-indicator" role="status" aria-live="polite">
-            <span class="status-dot" aria-hidden="true"></span>
-            <span>Status: Critical</span>
-        </div>
-
-        <h1>Health Rumors Move Faster Than Medicine. We're Closing the Gap.</h1>
-
-        <p class="hero-subtitle">
-            In 2026, a WhatsApp voice note can undo a year of clinical care in seconds. PRITMA is the world's first clinical-grade intelligence platform built to detect and neutralize life-threatening misinformation before it reaches your patients.
-        </p>
-
-        <div class="cta-group">
-            <button class="btn btn-primary" onclick="scrollToSection('waitlist')" aria-label="Join waitlist for early institutional access">
-                [Secure Early Access for My Institution]
-            </button>
-            <button class="btn btn-secondary" onclick="scrollToSection('observatory')" aria-label="View live hallucination tracker">
-                [View the Live Hallucination Tracker]
-            </button>
-        </div>
-    </section>
-
-    <!-- Countdown Section -->
-    <section class="countdown-section" aria-labelledby="countdown-title">
-        <h2 class="countdown-title" id="countdown-title">Days Until PRITMA Sentinel Goes Live in Lagos & Kano</h2>
-        <div class="countdown" role="timer" aria-live="polite">
-            <div class="countdown-item">
-                <span class="countdown-value" id="days">00</span>
-                <span class="countdown-label">Days</span>
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" role="region" aria-labelledby="hero-heading">
+            <div class="status-indicator" role="status" aria-live="polite" aria-atomic="true">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span>Status: Critical</span>
             </div>
-            <div class="countdown-item">
-                <span class="countdown-value" id="hours">00</span>
-                <span class="countdown-label">Hours</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-value" id="minutes">00</span>
-                <span class="countdown-label">Minutes</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-value" id="seconds">00</span>
-                <span class="countdown-label">Seconds</span>
-            </div>
-        </div>
-    </section>
 
-    <!-- Hallucination Observatory -->
-    <section class="observatory" id="observatory" aria-labelledby="observatory-title">
-        <div class="section-header">
-            <h2 class="section-title" id="observatory-title">The Hallucination Observatory</h2>
-            <p class="section-subtitle">
-                Real myths circulating right now. Standard AI thinks they're safe. Our clinical experts know better.
-                <strong style="color: var(--accent-green);">The Point: You are seeing the 'Invisible Danger' that only PRITMA can detect.</strong>
+            <h1 id="hero-heading" class="hero-title">Health Rumors Move Faster Than Medicine. We're Closing the Gap.</h1>
+
+            <p class="hero-subtitle">
+                In 2026, a WhatsApp voice note can undo a year of clinical care in seconds. PRITMA is the world's first clinical-grade intelligence platform built to detect and neutralize life-threatening misinformation before it reaches your patients.
             </p>
-        </div>
 
-        <div class="ticker-container" role="region" aria-label="Health misinformation examples">
-            <div class="ticker-wrapper" id="tickerWrapper">
-                <!-- Myth cards will be duplicated here by JS for seamless scroll -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Waitlist Section -->
-    <section class="waitlist-section" id="waitlist" aria-labelledby="waitlist-title">
-        <div class="section-header">
-            <h2 class="section-title" id="waitlist-title">Join the Waitlist</h2>
-            <p class="section-subtitle">
-                Tiered access. Priority goes to institutions combating misinformation on the frontlines.
-            </p>
-        </div>
-
-        <div class="form-container">
-            <form id="waitlistForm" novalidate aria-label="Waitlist registration form">
-                <div class="form-group" id="emailGroup">
-                    <label for="email">Work Email <span aria-label="required">*</span></label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        required 
-                        aria-required="true"
-                        aria-describedby="emailError"
-                        placeholder="your.name@institution.org"
-                    />
-                    <span class="error-message" id="emailError" role="alert">Please enter a valid work email address</span>
-                </div>
-
-                <div class="form-group" id="orgTypeGroup">
-                    <label for="orgType">Organization Type <span aria-label="required">*</span></label>
-                    <select 
-                        id="orgType" 
-                        name="orgType" 
-                        required 
-                        aria-required="true"
-                        aria-describedby="orgTypeError"
-                    >
-                        <option value="">Select your organization type</option>
-                        <option value="moh">Ministry of Health</option>
-                        <option value="ngo">NGO / Non-Profit</option>
-                        <option value="hospital">Private Hospital</option>
-                        <option value="media">Media Organization</option>
-                        <option value="academic">Academic Institution</option>
-                        <option value="other">Other</option>
-                    </select>
-                    <span class="error-message" id="orgTypeError" role="alert">Please select your organization type</span>
-                </div>
-
-                <div class="form-group" id="mythGroup">
-                    <label for="myth">What is the most dangerous myth you've encountered this week? <span aria-label="required">*</span></label>
-                    <textarea 
-                        id="myth" 
-                        name="myth" 
-                        required 
-                        aria-required="true"
-                        aria-describedby="mythError"
-                        placeholder="Describe the health misinformation or rumor that concerns you most..."
-                    ></textarea>
-                    <span class="error-message" id="mythError" role="alert">Please share a health myth you've encountered</span>
-                </div>
-
-                <button type="submit" class="submit-btn">
-                    Secure My Institution's Access
+            <div class="cta-group">
+                <button class="btn btn-primary" onclick="scrollToSection('waitlist')" aria-label="Join waitlist for early institutional access">
+                    Secure Early Access for My Institution
                 </button>
-            </form>
-        </div>
-    </section>
+                <button class="btn btn-secondary" onclick="scrollToSection('observatory')" aria-label="View live hallucination tracker">
+                    View the Live Hallucination Tracker
+                </button>
+            </div>
+        </section>
 
-    <!-- Infrastructure Moat -->
-    <section class="infrastructure" aria-labelledby="infrastructure-title">
-        <div class="section-header">
-            <h2 class="section-title" id="infrastructure-title">We Aren't Just a Chatbot. We Are the API for Clinical Trust.</h2>
-            <p class="section-subtitle">
-                The Centaur Model: Where AI speed meets human clinical judgment.
-            </p>
-        </div>
-
-        <div class="centaur-diagram" role="img" aria-label="PRITMA's Centaur Model workflow diagram">
-            <div class="diagram-flow">
-                <div class="flow-node">
-                    <div class="flow-node-title">AI Detection Layer</div>
-                    <div class="flow-node-desc">Real-time monitoring of health claims across WhatsApp, social media, and messaging platforms</div>
+        <!-- Countdown Section -->
+        <section class="countdown-section" aria-labelledby="countdown-title">
+            <h2 class="countdown-title" id="countdown-title">Days Until PRITMA Sentinel Goes Live in Lagos & Kano</h2>
+            <div class="countdown" role="timer" aria-live="polite" aria-atomic="true">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="days" aria-label="Days remaining">00</span>
+                    <span class="countdown-label">Days</span>
                 </div>
-                <div class="flow-arrow" aria-hidden="true">→</div>
-                <div class="flow-node">
-                    <div class="flow-node-title">Human Verification</div>
-                    <div class="flow-node-desc">Licensed Nigerian clinicians verify and flag high-harm misinformation</div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="hours" aria-label="Hours remaining">00</span>
+                    <span class="countdown-label">Hours</span>
                 </div>
-                <div class="flow-arrow" aria-hidden="true">→</div>
-                <div class="flow-node">
-                    <div class="flow-node-title">Clinical Signature</div>
-                    <div class="flow-node-desc">Verified, trusted output with provable clinical backing</div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="minutes" aria-label="Minutes remaining">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="seconds" aria-label="Seconds remaining">00</span>
+                    <span class="countdown-label">Seconds</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Hallucination Observatory -->
+        <section class="observatory" id="observatory" aria-labelledby="observatory-title">
+            <div class="section-header">
+                <h2 class="section-title" id="observatory-title">The Hallucination Observatory</h2>
+                <p class="section-subtitle">
+                    Real myths circulating right now. Standard AI thinks they're safe. Our clinical experts know better.
+                    <strong class="highlight-text">The Point: You are seeing the 'Invisible Danger' that only PRITMA can detect.</strong>
+                </p>
+            </div>
+
+            <div class="ticker-container" role="region" aria-label="Health misinformation examples" aria-live="off">
+                <div class="ticker-wrapper" id="tickerWrapper">
+                    <!-- Myth cards populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="observatory-cta">
+                <p class="observatory-note">These are just 5 examples from this week. The full stream never stops.</p>
+            </div>
+        </section>
+
+        <!-- Waitlist Section -->
+        <section class="waitlist-section" id="waitlist" aria-labelledby="waitlist-title">
+            <div class="section-header">
+                <h2 class="section-title" id="waitlist-title">Join the Waitlist</h2>
+                <p class="section-subtitle">
+                    Tiered access. Priority goes to institutions combating misinformation on the frontlines.
+                    <br><strong class="highlight-text">Invite 2 colleagues to move up 10 positions in the queue.</strong>
+                </p>
+            </div>
+
+            <div class="form-container">
+                <form id="waitlistForm" novalidate aria-label="Waitlist registration form">
+                    <!-- Honeypot for bot detection -->
+                    <div class="honeypot" aria-hidden="true">
+                        <label for="website">Website (leave blank)</label>
+                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="form-group" id="emailGroup">
+                        <label for="email">Work Email <span class="required" aria-label="required">*</span></label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            aria-required="true"
+                            aria-describedby="emailError emailHint"
+                            placeholder="your.name@institution.org"
+                            autocomplete="email"
+                            maxlength="254"
+                        />
+                        <span class="input-hint" id="emailHint">Use your institutional email for priority access</span>
+                        <span class="error-message" id="emailError" role="alert"></span>
+                    </div>
+
+                    <div class="form-group" id="orgTypeGroup">
+                        <label for="orgType">Organization Type <span class="required" aria-label="required">*</span></label>
+                        <select 
+                            id="orgType" 
+                            name="orgType" 
+                            required 
+                            aria-required="true"
+                            aria-describedby="orgTypeError"
+                        >
+                            <option value="">Select your organization type</option>
+                            <option value="moh">Ministry of Health</option>
+                            <option value="ngo">NGO / Non-Profit</option>
+                            <option value="hospital">Private Hospital / Clinic</option>
+                            <option value="media">Media Organization</option>
+                            <option value="academic">Academic / Research Institution</option>
+                            <option value="pharmacy">Pharmacy / Drug Distribution</option>
+                            <option value="other">Other Healthcare Organization</option>
+                        </select>
+                        <span class="error-message" id="orgTypeError" role="alert"></span>
+                    </div>
+
+                    <div class="form-group" id="mythGroup">
+                        <label for="myth">What is the most dangerous myth you've encountered this week? <span class="required" aria-label="required">*</span></label>
+                        <textarea 
+                            id="myth" 
+                            name="myth" 
+                            required 
+                            aria-required="true"
+                            aria-describedby="mythError mythHint"
+                            placeholder="Example: 'Patients are drinking salt water to prevent malaria based on WhatsApp voice notes...'"
+                            maxlength="1000"
+                            rows="5"
+                        ></textarea>
+                        <div class="char-counter">
+                            <span id="mythCharCount">0</span>/1000 characters
+                        </div>
+                        <span class="input-hint" id="mythHint">This helps us understand the misinformation landscape in your area</span>
+                        <span class="error-message" id="mythError" role="alert"></span>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="btn-text">Secure My Institution's Access</span>
+                        <span class="btn-loader" aria-hidden="true"></span>
+                    </button>
+
+                    <p class="form-privacy">
+                        <small>We respect your privacy. Your information is encrypted and never shared. 
+                        <a href="/privacy" class="privacy-link">Privacy Policy</a></small>
+                    </p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Infrastructure Moat -->
+        <section class="infrastructure" aria-labelledby="infrastructure-title">
+            <div class="section-header">
+                <h2 class="section-title" id="infrastructure-title">We Aren't Just a Chatbot. We Are the API for Clinical Trust.</h2>
+                <p class="section-subtitle">
+                    The Centaur Model: Where AI speed meets human clinical judgment.
+                </p>
+            </div>
+
+            <div class="centaur-diagram" role="img" aria-labelledby="diagram-description">
+                <span id="diagram-description" class="sr-only">
+                    PRITMA's three-stage verification process: AI Detection Layer monitors health claims, 
+                    Human Verification by licensed clinicians flags dangerous content, 
+                    resulting in a Clinical Signature with provable backing.
+                </span>
+                <div class="diagram-flow">
+                    <div class="flow-node" tabindex="0">
+                        <div class="flow-node-icon" aria-hidden="true">🤖</div>
+                        <div class="flow-node-title">AI Detection Layer</div>
+                        <div class="flow-node-desc">Real-time monitoring of health claims across WhatsApp, social media, and messaging platforms</div>
+                    </div>
+                    <div class="flow-arrow" aria-hidden="true">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <path d="M10 20 L30 20 M25 15 L30 20 L25 25" stroke="#00FF41" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="flow-node" tabindex="0">
+                        <div class="flow-node-icon" aria-hidden="true">👨‍⚕️</div>
+                        <div class="flow-node-title">Human Verification</div>
+                        <div class="flow-node-desc">Licensed Nigerian clinicians verify and flag high-harm misinformation</div>
+                    </div>
+                    <div class="flow-arrow" aria-hidden="true">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <path d="M10 20 L30 20 M25 15 L30 20 L25 25" stroke="#00FF41" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="flow-node" tabindex="0">
+                        <div class="flow-node-icon" aria-hidden="true">✓</div>
+                        <div class="flow-node-title">Clinical Signature</div>
+                        <div class="flow-node-desc">Verified, trusted output with provable clinical backing</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Success Modal -->
-    <div class="modal" id="successModal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+    <div class="modal" id="successModal" role="dialog" aria-labelledby="modal-title" aria-modal="true" aria-hidden="true">
+        <div class="modal-backdrop" onclick="closeModal()" aria-label="Close modal"></div>
         <div class="modal-content">
-            <div class="modal-icon" aria-hidden="true">✓</div>
-            <h3 id="modal-title">You're On The List</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-                Your institution has been added to the priority queue.
-            </p>
-            <div class="referral-box">
-                <p style="margin-bottom: 1rem;"><strong>Want to move up the list?</strong></p>
-                <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">
-                    Invite 2 colleagues from your Ministry to secure faster access.
-                </p>
-                <div class="referral-link" id="referralLink">https://pritma.health/join?ref=</div>
-                <button class="copy-btn" onclick="copyReferralLink()" aria-label="Copy referral link">
-                    Copy Link
-                </button>
+            <button class="modal-close" onclick="closeModal()" aria-label="Close modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="modal-icon" aria-hidden="true">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                    <circle cx="30" cy="30" r="28" stroke="#00FF41" stroke-width="3" fill="none"/>
+                    <path d="M15 30 L25 40 L45 20" stroke="#00FF41" stroke-width="3" fill="none"/>
+                </svg>
             </div>
-            <button class="btn btn-secondary" onclick="closeModal()" style="margin-top: 1.5rem;">
-                Close
+
+            <h3 id="modal-title">You're On The Priority List</h3>
+            <p class="modal-subtitle">Your institution has been added to the early access queue.</p>
+            
+            <div class="position-info">
+                <span class="position-number" id="queuePosition">Loading...</span>
+                <span class="position-label">Current Position in Queue</span>
+            </div>
+
+            <div class="referral-box">
+                <p class="referral-title"><strong>🚀 Move Up 10 Positions</strong></p>
+                <p class="referral-desc">Invite 2 colleagues from your organization to jump ahead in line.</p>
+                
+                <div class="referral-link-container">
+                    <input 
+                        type="text" 
+                        class="referral-link" 
+                        id="referralLink" 
+                        readonly 
+                        value="Loading..."
+                        aria-label="Your unique referral link"
+                    />
+                    <button class="copy-btn" onclick="copyReferralLink()" aria-label="Copy referral link to clipboard">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <span class="copy-text">Copy</span>
+                    </button>
+                </div>
+
+                <div class="share-buttons">
+                    <button class="share-btn whatsapp-btn" onclick="shareToWhatsApp()" aria-label="Share on WhatsApp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                        Share on WhatsApp
+                    </button>
+                </div>
+            </div>
+
+            <button class="btn btn-secondary modal-done-btn" onclick="closeModal()">
+                Done
             </button>
         </div>
     </div>
 
-    <script>
-        // ==================== COUNTDOWN TIMER ====================
-        // Target launch date: March 1, 2026
-        const launchDate = new Date('2026-03-01T00:00:00').getTime();
+    <!-- Footer -->
+    <footer role="contentinfo" class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 PRITMA Health. Combating health misinformation in Nigeria.</p>
+            <nav aria-label="Footer navigation">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = launchDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = String(days).padStart(2, '0');
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-
-            if (distance < 0) {
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-            }
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        // ==================== MYTH TICKER DATA ====================
-        const myths = [
-            {
-                tag: "Trending in Kano",
-                content: "A viral voice note claims that eating raw garlic daily can cure COVID-19 and prevent all respiratory infections.",
-                aiScore: "Standard AI models scored this as 'Generally Safe' - garlic has antimicrobial properties.",
-                clinicalFlag: "Our clinical experts flagged it as 'High Harm' - delays proper treatment, creates false security, may cause gastric issues."
-            },
-            {
-                tag: "Spreading in Lagos",
-                content: "WhatsApp messages suggest that drinking salt water can prevent malaria and kill parasites in the bloodstream.",
-                aiScore: "Standard AI models scored this as 'Possibly Helpful' - salt has some antiseptic properties.",
-                clinicalFlag: "Our clinical experts flagged it as 'Critical Risk' - causes severe dehydration, hypertension, kidney damage. Zero anti-malarial effect."
-            },
-            {
-                tag: "Viral This Week",
-                content: "A trending TikTok claims that herbal mixtures can cure diabetes and eliminate the need for insulin.",
-                aiScore: "Standard AI models scored this as 'Traditional Medicine - Informational' without harm flags.",
-                clinicalFlag: "Our clinical experts flagged it as 'Life-Threatening' - stopping insulin causes diabetic ketoacidosis, organ failure, death."
-            },
-            {
-                tag: "Facebook Post Alert",
-                content: "Popular health page suggests that vaccines contain microchips that can track your location and control your thoughts.",
-                aiScore: "Standard AI models scored this as 'Opinion - Low Confidence' without explicit warnings.",
-                clinicalFlag: "Our clinical experts flagged it as 'Public Health Crisis' - drives vaccine hesitancy, enables preventable disease outbreaks."
-            },
-            {
-                tag: "Circulating in Abuja",
-                content: "Voice notes claim that taking antibiotics at the first sign of any illness prevents all infections from developing.",
-                aiScore: "Standard AI models scored this as 'Medical Advice - General' with standard antibiotic information.",
-                clinicalFlag: "Our clinical experts flagged it as 'Critical Harm' - drives antibiotic resistance, suppresses diagnosis, causes adverse reactions."
-            }
-        ];
-
-        // ==================== POPULATE TICKER ====================
-        function populateTicker() {
-            const wrapper = document.getElementById('tickerWrapper');
-            
-            // Create myth cards
-            const mythCards = myths.map(myth => `
-                <div class="myth-card" onclick="toggleMythDetails(this)" role="article" tabindex="0" 
-                     onkeypress="if(event.key==='Enter') toggleMythDetails(this)">
-                    <div class="myth-tag">${myth.tag}</div>
-                    <div class="myth-content">"${myth.content}"</div>
-                    <div class="myth-comparison">
-                        <div class="comparison-item ai-score">
-                            <strong>AI Score:</strong> ${myth.aiScore}
-                        </div>
-                        <div class="comparison-item clinical-flag">
-                            <strong>Clinical Flag:</strong> ${myth.clinicalFlag}
-                        </div>
-                    </div>
-                    <div class="myth-details">
-                        <p style="color: var(--accent-green); margin-top: 1rem; font-weight: 600;">
-                            This is the gap PRITMA closes - the space between what AI thinks is safe and what clinicians know is dangerous.
-                        </p>
-                    </div>
-                </div>
-            `).join('');
-
-            // Duplicate cards for seamless loop
-            wrapper.innerHTML = mythCards + mythCards;
-        }
-
-        function toggleMythDetails(card) {
-            card.classList.toggle('expanded');
-        }
-
-        populateTicker();
-
-        // ==================== SCROLL ANIMATION ====================
-        let scrollTimeout;
-        window.addEventListener('scroll', () => {
-            const overlay = document.getElementById('scanOverlay');
-            overlay.classList.add('active');
-            
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                overlay.classList.remove('active');
-            }, 2000);
-        });
-
-        // ==================== SMOOTH SCROLL ====================
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        // ==================== FORM VALIDATION & SUBMISSION ====================
-        const form = document.getElementById('waitlistForm');
-        
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            // Clear previous errors
-            document.querySelectorAll('.form-group').forEach(group => {
-                group.classList.remove('error');
-            });
-
-            let isValid = true;
-
-            // Validate email
-            const email = document.getElementById('email');
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const workDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com'];
-            
-            if (!email.value.trim()) {
-                showError('emailGroup', 'Email is required');
-                isValid = false;
-            } else if (!emailRegex.test(email.value)) {
-                showError('emailGroup', 'Please enter a valid email address');
-                isValid = false;
-            } else if (workDomains.some(domain => email.value.toLowerCase().includes(domain))) {
-                showError('emailGroup', 'Please use your work email, not a personal email');
-                isValid = false;
-            }
-
-            // Validate organization type
-            const orgType = document.getElementById('orgType');
-            if (!orgType.value) {
-                showError('orgTypeGroup', 'Please select your organization type');
-                isValid = false;
-            }
-
-            // Validate myth text
-            const myth = document.getElementById('myth');
-            if (!myth.value.trim()) {
-                showError('mythGroup', 'Please share a health myth you\'ve encountered');
-                isValid = false;
-            } else if (myth.value.trim().length < 20) {
-                showError('mythGroup', 'Please provide more detail (at least 20 characters)');
-                isValid = false;
-            }
-
-            if (isValid) {
-                // Disable submit button
-                const submitBtn = form.querySelector('.submit-btn');
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Processing...';
-
-                // Simulate submission (replace with actual API call)
-                await simulateSubmission({
-                    email: email.value,
-                    orgType: orgType.value,
-                    myth: myth.value,
-                    timestamp: new Date().toISOString()
-                });
-
-                // Analytics tracking (Day 1 Database simulation)
-                trackSubmission({
-                    email: email.value,
-                    orgType: orgType.value,
-                    myth: myth.value
-                });
-
-                // Generate referral link
-                const referralCode = generateReferralCode(email.value);
-                document.getElementById('referralLink').textContent = 
-                    `https://pritma.health/join?ref=${referralCode}`;
-
-                // Show success modal
-                document.getElementById('successModal').classList.add('active');
-                
-                // Reset form
-                form.reset();
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Secure My Institution\'s Access';
-            }
-        });
-
-        function showError(groupId, message) {
-            const group = document.getElementById(groupId);
-            group.classList.add('error');
-            group.querySelector('.error-message').textContent = message;
-        }
-
-        async function simulateSubmission(data) {
-            // Simulate API call delay
-            return new Promise(resolve => {
-                setTimeout(() => {
-                    console.log('=== WAITLIST SUBMISSION ===');
-                    console.log('Email:', data.email);
-                    console.log('Organization Type:', data.orgType);
-                    console.log('Reported Myth:', data.myth);
-                    console.log('Timestamp:', data.timestamp);
-                    console.log('=== END SUBMISSION ===');
-                    resolve();
-                }, 1500);
-            });
-        }
-
-        function trackSubmission(data) {
-            // Store in localStorage (placeholder for backend analytics)
-            const submissions = JSON.parse(localStorage.getItem('pritma_submissions') || '[]');
-            submissions.push({
-                ...data,
-                timestamp: new Date().toISOString()
-            });
-            localStorage.setItem('pritma_submissions', JSON.stringify(submissions));
-
-            console.log('=== ANALYTICS TRACKED ===');
-            console.log('Total submissions:', submissions.length);
-            console.log('Latest myth keyword:', extractKeywords(data.myth));
-        }
-
-        function extractKeywords(text) {
-            // Simple keyword extraction for demo
-            const words = text.toLowerCase().split(/\s+/);
-            return words.filter(word => word.length > 5).slice(0, 3).join(', ');
-        }
-
-        function generateReferralCode(email) {
-            // Simple hash-like referral code generation
-            let hash = 0;
-            for (let i = 0; i < email.length; i++) {
-                hash = ((hash << 5) - hash) + email.charCodeAt(i);
-                hash = hash & hash;
-            }
-            return Math.abs(hash).toString(36).substr(0, 8).toUpperCase();
-        }
-
-        // ==================== MODAL FUNCTIONS ====================
-        function closeModal() {
-            document.getElementById('successModal').classList.remove('active');
-        }
-
-        function copyReferralLink() {
-            const link = document.getElementById('referralLink').textContent;
-            navigator.clipboard.writeText(link).then(() => {
-                const btn = event.target;
-                const originalText = btn.textContent;
-                btn.textContent = 'Copied!';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                }, 2000);
-            });
-        }
-
-        // Close modal on outside click
-        document.getElementById('successModal').addEventListener('click', (e) => {
-            if (e.target.id === 'successModal') {
-                closeModal();
-            }
-        });
-
-        // ==================== ACCESSIBILITY: ESC KEY ====================
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
-
-        // ==================== PERFORMANCE: LAZY LOAD ====================
-        // Intersection Observer for scan animation
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe sections for fade-in effect
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(section);
-        });
-
-        // ==================== TESTING NOTES ====================
-        /*
-        TESTING CHECKLIST:
-        
-        1. FORM VALIDATION:
-           - Submit empty form → should show all errors
-           - Enter invalid email → should show email error
-           - Enter personal email (gmail, yahoo) → should suggest work email
-           - Enter short myth (<20 chars) → should request more detail
-           - Fill all fields correctly → should submit successfully
-        
-        2. COUNTDOWN TIMER:
-           - Should update every second
-           - Should show correct days until March 1, 2026
-           - All values should be zero-padded (e.g., "05" not "5")
-        
-        3. MYTH TICKER:
-           - Should scroll continuously
-           - Should pause on hover
-           - Click/Enter on card should expand details
-           - Should have seamless loop (no visible restart)
-        
-        4. MODAL:
-           - Should appear after successful form submission
-           - Should show unique referral code
-           - Copy button should work and show "Copied!" feedback
-           - Close button should work
-           - ESC key should close modal
-           - Clicking outside modal should close it
-        
-        5. RESPONSIVE DESIGN:
-           - Test on mobile (< 768px): cards should resize, buttons full-width
-           - Test on tablet (768px - 1024px): layout should adapt
-           - Test on desktop (> 1024px): full layout should display
-        
-        6. ACCESSIBILITY:
-           - Tab through entire page → all interactive elements focusable
-           - Screen reader test → all ARIA labels present
-           - Keyboard navigation → Enter/Space trigger buttons
-           - Color contrast → meets WCAG AA standards
-        
-        7. PERFORMANCE:
-           - Check Network tab → should load in < 1.5s
-           - No external requests (everything embedded)
-           - Animations smooth (60fps)
-        
-        8. ANALYTICS:
-           - Open DevTools Console
-           - Submit form → check console logs for submission data
-           - Check localStorage → "pritma_submissions" key should exist
-        */
-    </script>
+    <!-- Main JavaScript (deferred for performance) -->
+    <script src="script.js" defer></script>
+    
+    <!-- Noscript Fallback -->
+    <noscript>
+        <div style="padding: 2rem; text-align: center; background: #ff4444; color: white;">
+            <p><strong>JavaScript is required</strong> to experience PRITMA Health's interactive features. Please enable JavaScript in your browser.</p>
+        </div>
+    </noscript>
 </body>
 </html>
